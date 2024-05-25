@@ -8,6 +8,7 @@ export const routes: Routes = [{
 },
 {
   path: 'create-product',
-  component: CreateComponent
+  //lase load
+  loadComponent: ()=>  import('./features/create/create.component').then(m => m.CreateComponent), 
 }
 ];
