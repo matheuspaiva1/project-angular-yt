@@ -8,7 +8,7 @@ export const routes: Routes = [{
 },
 {
   path: 'create-product',
-  //lase load
+  //lazy loading
   loadComponent: ()=>  import('./features/create/create.component').then(m => m.CreateComponent), 
 }
 ];
