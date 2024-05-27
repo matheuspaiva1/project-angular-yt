@@ -8,9 +8,6 @@ import {MatSnackBar} from '@angular/material/snack-bar'
 import { ProductsService } from '../../shared/services/products.service';
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-create',
   standalone: true,
@@ -26,26 +23,17 @@ export class CreateComponent {
 
   router = inject(Router)
 
-
-
-
-
   form = new FormGroup({
     title: new FormControl<string>('', {nonNullable:true, validators: Validators.required})
   })
 
   onSubmit(){
-
-    
-
     this.productsService.post({
       title: this.form.controls.title.value
     }).subscribe(()=> {
       this.matSnackBar.open('Produto criado com Sucesso!', 'Ok')
       this.router.navigateByUrl('/')
     })
-
-    
   }
 
 
