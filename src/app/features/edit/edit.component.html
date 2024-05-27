@@ -1,12 +1,1 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit(product)" class="form-container">
-  <div class="form-content-container">
-    <mat-form-field>
-      <mat-label>Input</mat-label>
-      <input type="text" formControlName="title" placeholder="Titulo" matInput>
-    </mat-form-field>
-  
-    <button type="submit" mat-raised-button color="primary">Salvar</button>
-  </div>
-</form>
-
-
+<app-form [product]="product" (done)="onSubmit($event)"></app-form>
