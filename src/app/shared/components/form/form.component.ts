@@ -23,7 +23,7 @@ export class FormComponent {
 
   ngOnInit() {
     this.form = new FormGroup({
-      title: new FormControl<string>(this.product()?.title || '', {nonNullable:true, validators: Validators.required})
+      title: new FormControl<string>(this.product()?.title || '', {nonNullable:true, validators: Validators.required}) 
     })
   }
 
