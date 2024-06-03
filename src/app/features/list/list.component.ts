@@ -9,21 +9,31 @@ import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialo
 @Component({
   selector: 'app-confirmation-dialog',
   template: `
-    <h2 mat-dialog-title>Delete file</h2>
+    <h2 mat-dialog-title>Deletar Produto</h2>
 
     <mat-dialog-content>
-      Would you like to delete cat.jpeg?
+      Tem certeza de que quer deletar?
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button mat-button mat-dialog-close>No</button>
-      <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+      <button mat-button (click)="onNo()">Não</button>
+      <button mat-raised-button (click)="onYes()" cdkFocusInitial color="primary" >Ok</button>
     </mat-dialog-actions>
   `,
   standalone: true,
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
 })
-export class ConfirmationDialogComponent {}
+export class ConfirmationDialogComponent {
+  matDialogRef = inject(MatDialogRef)
+
+  onNo(){
+    this.matDialogRef.close(false)
+  }
+
+  onYes(){
+    this.matDialogRef.close(true)
+  }
+}
 
 @Component({
   selector: 'app-list',
@@ -49,8 +59,8 @@ export class ListComponent {
     this.router.navigate(['/edit-product', product.id]);
   }
   onDelete(product: Product) {
-    this.matDialog.open(ConfirmationDialogComponent).afterClosed().subscribe((data) => {
-      console.log('afterClosed',data);
+    this.matDialog.open(ConfirmationDialogComponent).afterClosed().subscribe((answer: boolean) => {
+      console.log('afterClosed',answer);
     })
   }
 }
