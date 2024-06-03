@@ -5,6 +5,7 @@ import { CardComponent } from './components/card/card.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -59,8 +60,15 @@ export class ListComponent {
     this.router.navigate(['/edit-product', product.id]);
   }
   onDelete(product: Product) {
-    this.matDialog.open(ConfirmationDialogComponent).afterClosed().subscribe((answer: boolean) => {
-      console.log('afterClosed',answer);
+    this.matDialog.open(ConfirmationDialogComponent)
+    .afterClosed()
+    .pipe(filter((answer) => answer === true))
+    .subscribe(() => {
+      this.productsServices.delete(product.id).subscribe(() => {
+        this.productsServices.getAll().subscribe((products) => {
+          this.products = products
+        })
+      })
     })
   }
 }

@@ -1,40 +1,12 @@
 {
   "products": [
     {
-      "title": "teste 3 4 5",
-      "id": "1"
-    },
-    {
-      "id": "000b",
-      "title": "Matheus"
-    },
-    {
-      "id": "b348",
-      "title": "Matheus"
-    },
-    {
       "id": "736a",
       "title": "produto 1"
     },
     {
       "id": "23e1",
       "title": "Produto2"
-    },
-    {
-      "id": "93c8",
-      "title": ""
-    },
-    {
-      "id": "6097",
-      "title": "camisa"
-    },
-    {
-      "id": "f87e",
-      "title": "criar novo"
-    },
-    {
-      "id": "4265",
-      "title": "test 77"
     }
   ]
 }
